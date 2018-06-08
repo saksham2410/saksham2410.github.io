@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--
+  Original Design: Spectral by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Jekyll build mod
+  Modified By: Kumar Ayush
+-->
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haskell versus Excel - Kumar Ayush</title>
+  <meta name="description" content="While trying to make an extremely powerful electromagnet, I came across a spreadhseet which had calculations for the magnetic field produced based on the thi...">
+  <!-- og tags -->
+  <meta property="og:title" content="Haskell versus Excel - Kumar Ayush" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://localhost:4000/projects/spreadsheet-programming.html" />
+  <meta property="og:image" content="/images/me_reading.jpg" />
+
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://localhost:4000/projects/spreadsheet-programming.html">
+  <link rel="stylesheet" href="/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <link rel="alternate" type="application/rss+xml" title="Kumar Ayush" href="http://localhost:4000/feed.xml">
+   <script type="text/x-mathjax-config">                                       
+      MathJax.Hub.Config({                                                          
+                tex2jax: {                                                      
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],                                 
+      processEscapes: true                                                      
+    }                                                                           
+  });                                                                           
+   </script>                                                                   
+   <script type="text/javascript"                                              
+           src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   </script>
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+  <h1><a href="/index.html">Kumar Ayush</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            
+            
+            <li><a href="/blog/">Blog</a></li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li><a href="/projects/">Projects</a></li>
+            
+            
+            <li><a href="/feed.xml"
+                   class="icon fa-feed"> RSS Feed</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+      <article id="main">
+
+  <section class="wrapper style5">
+    <div class="inner">
+        
+        <span class="image left"><img src="/media/spreadsheet.png" alt="" /></span>
+        
+        <h2>Haskell versus Excel</h2>
+        <h3>Spreadsheet Programming</h3>
+        <p><em>11 April 2018</em></p>
+
+        <p>While trying to make an extremely powerful electromagnet, I came across a spreadhseet which had calculations for the magnetic field produced based on the thickness of the wire, voltage available and radius of the solenoid. The calculation for optimal parameters gets complicated because you also have to think of heat generated which changes the resistance of the wire and perhaps a few other issues. The spreadsheet had all the calculations encoded and we just had to input some parameters and it would output the rest. It was very handy, but it struck me then, spreadsheets are just programs</p>
+<!--break-->
+<p>Some time later I came across this book called “<a href="www.amazon.com/Exercises-Programming-Style-Cristina-Videira/dp/1482227371/">Exercises in Programming Styles</a>” by Cristina Vidiera which has a companion <a href="https://github.com/crista/exercises-in-programming-style">GH repo</a>. Style number 26 is called <em>spreadsheet</em> and she emphasises on how data oriented this style is. Her implementation uses lambda functions in python to apply an operation over a column and get the next. This made me wondering if spreadhseets are capable of implementing functional programming. I am afraid I do not know enough, at the time of this writing, to prove or disprove this claim in a mathematically rigorous fashion. However, I was able to implement all functionalities provided in the basic Haskell tutorial. Some things are easier to do on Spreadsheets than in Haskell and vice versa. I could not wrap my head around how monads can be written onto spreadsheets but then I think you don’t really need to for all practical purposes I can imagine.</p>
+<!--break-->
+<p>Most of my ideas are documented at this wiki page about <a href="https://wncc-iitb.org/wiki/index.php/Spreadsheet_Programming">Spreadsheet Programming</a>. Do check out the work of <a href="http://www.felienne.com/archives/tag/spreadsheets">Prof. Felienne</a> who has written a Turing Machine in MS Excel and has more exciting research in spreadsheet programming. Regretfully, I discovered her much after my own exploration. There is a <a href="https://www.youtube.com/watch?v=B4Ms65fdE_0">YouTube video</a> about my adventures. I am only partly embarassed by it, hence I find it worthy to share. You might want to watch it sped up. The gentleman helping me out here is <em>Meet Udeshi</em></p>
+
+    </div>
+  </section>
+
+</article>
+
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    
+    
+    
+    <li><a target="_blank" href="https://twitter.com/kumarayush4ever" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://github.com/cheekujodhpur" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://linkedin.com/in/cheekujodhpur" class="icon fa-linkedin-square"
+           ><span class="label">linkedin-square</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://facebook.com/cheekujodhpur" class="icon fa-facebook-official"
+           ><span class="label">facebook-official</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://plus.google.com/u/0/+cheekujodhpur" class="icon fa-google-plus-square"
+           ><span class="label">google-plus-square</span></a></li>
+    
+    
+    
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 
+    
+    2018
+    Kumar Ayush</li>
+    <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+    <li>Built with: <a href="http://jekyllrb.com" target="_blank">Jekyll</a></li>
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script>
+function handleLinks () {
+    // Don't open our own site's links in new tabs
+    var host = location.hostname 
+        // Grab and loop over all <a> elements
+        var allLinks = document.querySelectorAll('a') 
+        for (var i = 0; i < allLinks.length; ++i) {
+            // if links are external and not empty
+            if (allLinks[i].hostname !== host && allLinks[i].hostname !== '') {
+                allLinks[i].target = '_blank'
+            }
+        }
+}
+</script>
+<script src="/js/main.js"></script>
+
+
+    </div>
+
+  </body>
+
+</html>

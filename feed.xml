@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title></title>
+        <description>I am an everyday data scientist and developer who likes to turn dreams into reality. My magical staff is called an undergraduate degree in Physics mixed with experience in astronomy, web development, computer graphics and management.
+</description>
+        <link>http://localhost:4000</link>
+        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+        
+        
+        <item>
+            <title>Spam Slam</title>
+            <description>&lt;p&gt;
+Oops! This blog is posted as a guest article on another site. Please &lt;a href=&quot;https://hackinout.co/blog/blockchain-track-winner-spamslam/&quot;&gt;click here&lt;/a&gt; to redirect yourself.
+&lt;/p&gt;
+</description>
+            <pubDate>Thu, 07 Jun 2018 08:42:00 +0530</pubDate>
+            <link>http://localhost:4000//bposts/spamslam.html</link>
+            <guid isPermaLink="true">http://localhost:4000//bposts/spamslam.html</guid>
+        </item>
+        
+        <item>
+            <title>Copy Constructor Magic</title>
+            <description>&lt;script src=&quot;https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;i&gt;This post is co-authored with &lt;a href=&quot;http://udiboy1209.github.io/&quot;&gt;Meet Udeshi&lt;/a&gt;.&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;Examine this piece of code. It has two classes &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt; has an instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; and a function which fetches a new instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt;, but the local variable in the function uses the same name as the member instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt;. This is allowed, &lt;code class=&quot;highlighter-rouge&quot;&gt;-Wshadow&lt;/code&gt; will provide you a warning. But it is understood that this can result in unexpected or garbage output.&lt;/p&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;#include &amp;lt;iostream&amp;gt;
+using namespace std;
+                                                                                
+class foo{                                                                      
+    int x,y,z;                                                                  
+                                                                                
+    public:                                                                     
+    int gx(){return x;};                                                        
+    int gy(){return y;};                                                        
+    int gz(){return z;};                                                        
+    foo(int _x,int _y,int _z):x(_x),y(_y),z(_z){};                              
+                                                                                
+    /*foo(const foo &amp;amp;kk){                                                       
+        x = kk.x;                                                               
+        y = kk.y;                                                               
+        z = kk.z;                                                               
+    }*/                                                                         
+                                                                                
+    void print(void){                                                           
+        cout &amp;lt;&amp;lt; &quot;x: &quot; &amp;lt;&amp;lt; x &amp;lt;&amp;lt; &quot;, &quot; &amp;lt;&amp;lt; &quot;y: &quot; &amp;lt;&amp;lt; y &amp;lt;&amp;lt; &quot;, &quot; &amp;lt;&amp;lt; &quot;z: &quot; &amp;lt;&amp;lt; z &amp;lt;&amp;lt; endl; 
+                                                                                
+    }                                                                           
+};                                                                              
+                                                                                
+class bar{                                                                      
+    foo doo;                                                                    
+                                                                                
+    public:                                                                     
+    bar(foo _doo):doo(_doo){};                                                  
+    foo scoo(void);                                                             
+};                                                                              
+                                                                                
+                                                                                
+foo bar::scoo(void){                                                            
+    foo doo(doo.gx(), doo.gy(), doo.gz());                                      
+    return doo;                                                                 
+}                                                                               
+                                                                                
+int main(){                                                                     
+    bar obj(foo(1,1,1));                                                        
+                                                                                
+    for(int i = 0;i&amp;lt;5;i++){                                                     
+        obj.scoo().print();                                                     
+    }                                                                           
+    return 0;                                                                   
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above code, for example gives the following output. &lt;i&gt;g++ -O0 -std=c++11&lt;/i&gt; with &lt;i&gt;g++ 5.4&lt;/i&gt;&lt;/p&gt;
+&lt;pre&gt;x: 6299752, y: 0, z: -19107175
+x: -19107175, y: 0, z: 4197253
+x: 4197253, y: 0, z: 4197253
+x: 4197253, y: 0, z: 4197253
+x: 4197253, y: 0, z: 4197253
+&lt;/pre&gt;
+
+&lt;p&gt;Well, what were we thinking? What we have done is b&lt;strong&gt;**&lt;/strong&gt;t and we get that for the output! Just a moment though, uncomment the explicit definition of the copy constructor for class &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; and here is what you get&lt;/p&gt;
+&lt;pre&gt;x: 1, y: 1, z: 1
+x: 1, y: 1, z: 1
+x: 1, y: 1, z: 1
+x: 1, y: 1, z: 1
+x: 1, y: 1, z: 1
+&lt;/pre&gt;
+&lt;p&gt;That is the magic that I had to show you. Now we shall investigate where it comes from. The copy constructor definition that we put in place is equivalent to the default copy constructor that gcc would provide. What is different here? To help me further with this issue, I brought in help from Meet. Most of the following is written by him, with a few minor edits by me.&lt;/p&gt;
+
+&lt;h6&gt;Basics of X86 assembly&lt;/h6&gt;
+
+&lt;p&gt;
+The syntax is called “intel” syntax
+which is basically &lt;code class=&quot;highlighter-rouge&quot;&gt;inst dest, source&lt;/code&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+There are various addressing modes in X86 for either source or destination.
+They can either be a register (inside the processor) or a memory location (in RAM),
+or a name of some register.
+&lt;/p&gt;
+
+&lt;p&gt;
+Memory locations are written inside square brackets. They can be static, or dynamically computed using an expression based on registers.
+&lt;/p&gt;
+
+&lt;p&gt;
+Registers are named &lt;code class=&quot;highlighter-rouge&quot;&gt;e**&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;r**&lt;/code&gt;. When same last two letters of
+such two registers, they refer to the whole register and 32-bit section.
+Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;eax&lt;/code&gt; is 64-bit register, and &lt;code class=&quot;highlighter-rouge&quot;&gt;rax&lt;/code&gt; refers to 32-bit MSB of &lt;code class=&quot;highlighter-rouge&quot;&gt;eax&lt;/code&gt;.
+So if you store a value in &lt;code class=&quot;highlighter-rouge&quot;&gt;eax&lt;/code&gt; and read from &lt;code class=&quot;highlighter-rouge&quot;&gt;rax&lt;/code&gt;, you will get higher
+32 bits of the number stored. This was done as an addition for 64-bit processors over 32-bit processors (and also backward compatibility reasons).
+&lt;/p&gt;
+
+&lt;p&gt;
+Basic instructions are &lt;code class=&quot;highlighter-rouge&quot;&gt;mov&lt;/code&gt; which &lt;em&gt;copies&lt;/em&gt; value from source to destination,
+&lt;code class=&quot;highlighter-rouge&quot;&gt;lea&lt;/code&gt; or load effective address which copies memory address of the source
+memory location to destination (much like creating a pointer),
+&lt;code class=&quot;highlighter-rouge&quot;&gt;call&lt;/code&gt; which is responsible for calling functions.
+&lt;/p&gt;
+
+&lt;p&gt;
+Special purpose registers are &lt;code class=&quot;highlighter-rouge&quot;&gt;rsp&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;rbp&lt;/code&gt; which are stack pointer
+and stack-base pointer or frame pointer. They store the location of the stack for
+the function.
+&lt;/p&gt;
+
+&lt;h6&gt;What goes wrong when shadowing&lt;/h6&gt;
+
+&lt;p&gt;
+This is the assembly implementation of function bar::scoo()
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;push   rbp
+mov    rbp,rsp
+push   r12
+push   rbx
+sub    rsp,0x40
+mov    QWORD PTR [rbp-0x38],rdi
+mov    rax,QWORD PTR fs:0x28
+
+mov    QWORD PTR [rbp-0x18],rax
+xor    eax,eax
+lea    rax,[rbp-0x30]
+mov    rdi,rax
+call   b28 &amp;lt;_ZN3foo2gzEv&amp;gt;
+mov    r12d,eax
+lea    rax,[rbp-0x30]
+mov    rdi,rax
+call   b16 &amp;lt;_ZN3foo2gyEv&amp;gt;
+mov    ebx,eax
+lea    rax,[rbp-0x30]
+mov    rdi,rax
+call   b06 &amp;lt;_ZN3foo2gxEv&amp;gt;
+mov    esi,eax
+lea    rax,[rbp-0x30]
+mov    ecx,r12d
+mov    edx,ebx
+mov    rdi,rax
+call   b3a &amp;lt;_ZN3fooC1Eiii&amp;gt;
+mov    rax,QWORD PTR [rbp-0x30]
+mov    QWORD PTR [rbp-0x24],rax
+mov    eax,DWORD PTR [rbp-0x28]
+mov    DWORD PTR [rbp-0x1c],eax
+mov    rdx,QWORD PTR [rbp-0x24]
+mov    eax,DWORD PTR [rbp-0x1c]
+mov    rcx,rdx
+mov    edx,eax
+mov    rax,rcx
+mov    rbx,QWORD PTR [rbp-0x18]
+xor    rbx,QWORD PTR fs:0x28
+
+je     a05 &amp;lt;_ZN3bar4scooEv+0x8b&amp;gt;
+call   840 &amp;lt;__stack_chk_fail@plt&amp;gt;
+add    rsp,0x40
+pop    rbx
+pop    r12
+pop    rbp
+ret    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt; `sub rsp,0x40` subtracts 0x40 or 64 from register `rsp`
+  i.e. allocating 64 bytes of space on the stack (stacks grow downward nowadays,
+  so push operatins will decrement stack pointer)&lt;/li&gt;
+ 
+&lt;li&gt; When calling any function of class foo, we have to provide a pointer to instance of foo.
+  Much similar to how you pass a special variable `self` in python for member function calls.
+  So in this, the foo instance has been stored at `[rbp-0x30]`. 
+  You can see that there are `lea rax, [rbp-0x30]` instructions before every function call.&lt;/li&gt;
+
+&lt;li&gt; `call &amp;lt;_ZN3foo2gzEv&amp;gt;` calls foo::gz() using instance of foo at `[rbp-0x30]`.
+  Notice that this instance isn't initialised at all when we call gx(), gy() or gz().
+  Hence, whatever values `[rbp-0x30]` has would be garbage. The calls return garbage
+  and store it in local registers&lt;/li&gt;
+
+&lt;li&gt; The function then passes these garbage value to the final init call which is
+  `call &amp;lt;_ZN3fooC1Eiii&amp;gt;`. Basically our `doo` instance is reading from its uninitialized
+  self and using those values to then later finally initialize itself.&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;
+&lt;em&gt;&lt;b&gt;Note&lt;/b&gt;: In this case, the new &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; variable was first allocated on the stack of function &lt;code class=&quot;highlighter-rouge&quot;&gt;scoo&lt;/code&gt;
+and hence held garbage. This happens because the lack of copy constructor
+makes C++ restort to using internal copy operations 
+i.e. when returning the final object, the total 12 bytes of object foo
+are read into one 32-bit register and one 64-bit regster (rdx and eax) and returned&lt;/em&gt; 
+&lt;/p&gt;
+
+&lt;h6&gt;How does the copy constructor affect this?&lt;/h6&gt;
+
+&lt;p&gt;
+The copy constructor leads to a change in the calling convention of the function scoo.
+Previously, it returned the value by storing it inside registers. Now the caller(main function) provides callee(scoo function) with a pointer where it should store return value. You could think of it as pass by reference but for the return value.
+&lt;/p&gt;
+
+&lt;p&gt;
+Assembly for function bar::scoo()
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;
+push   rbp
+mov    rbp,rsp
+push   r12
+push   rbx
+sub    rsp,0x20
+mov    QWORD PTR [rbp-0x28],rdi
+mov    QWORD PTR [rbp-0x30],rsi
+mov    rax,QWORD PTR fs:0x28
+
+mov    QWORD PTR [rbp-0x18],rax
+xor    eax,eax
+mov    rax,QWORD PTR [rbp-0x28]
+mov    rdi,rax
+call   b0c &amp;lt;_ZN3foo2gzEv&amp;gt;
+mov    r12d,eax
+mov    rax,QWORD PTR [rbp-0x28]
+mov    rdi,rax
+call   afa &amp;lt;_ZN3foo2gyEv&amp;gt;
+mov    ebx,eax
+mov    rax,QWORD PTR [rbp-0x28]
+mov    rdi,rax
+call   aea &amp;lt;_ZN3foo2gxEv&amp;gt;
+mov    esi,eax
+mov    rax,QWORD PTR [rbp-0x28]
+mov    ecx,r12d
+mov    edx,ebx
+mov    rdi,rax
+call   b1e &amp;lt;_ZN3fooC1Eiii&amp;gt;
+nop
+mov    rax,QWORD PTR [rbp-0x28]
+mov    rdx,QWORD PTR [rbp-0x18]
+xor    rdx,QWORD PTR fs:0x28
+
+je     9f1 &amp;lt;_ZN3bar4scooEv+0x77&amp;gt;
+call   840 &amp;lt;__stack_chk_fail@plt&amp;gt;
+add    rsp,0x20
+pop    rbx
+pop    r12
+pop    rbp
+ret    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+Notice the difference here: instead of loading &lt;code class=&quot;highlighter-rouge&quot;&gt;rax&lt;/code&gt; value using &lt;code class=&quot;highlighter-rouge&quot;&gt;lea&lt;/code&gt; instruction, 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;mov rax,QWORD PTR [rbp-0x28]&lt;/code&gt; is being used.
+This will not load address &lt;code class=&quot;highlighter-rouge&quot;&gt;rbp-0x28&lt;/code&gt; into &lt;code class=&quot;highlighter-rouge&quot;&gt;rax&lt;/code&gt;, but simply copy value at
+location &lt;code class=&quot;highlighter-rouge&quot;&gt;[rbp-0x28]&lt;/code&gt; into &lt;code class=&quot;highlighter-rouge&quot;&gt;rax&lt;/code&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+But still, the same procedure is being conducted. 
+The function calls &lt;code class=&quot;highlighter-rouge&quot;&gt;gx()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;gy()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;gz()&lt;/code&gt; on this
+uninitialised location given by value of &lt;code class=&quot;highlighter-rouge&quot;&gt;[rbp-0x28]&lt;/code&gt;
+and then calls the constructor with those values.
+&lt;/p&gt;
+
+&lt;p&gt;
+Then how does the correct value pop out?
+We need to look at main() function where scoo() is called.
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;
+mov    QWORD PTR [rbp-0x8],rax
+xor    eax,eax
+lea    rax,[rbp-0x14]
+mov    ecx,0x1
+mov    edx,0x1
+mov    esi,0x1
+mov    rdi,rax
+call   b1e &amp;lt;_ZN3fooC1Eiii&amp;gt;
+lea    rdx,[rbp-0x14]
+lea    rax,[rbp-0x20]
+mov    rsi,rdx
+mov    rdi,rax
+call   c36 &amp;lt;_ZN3barC1E3foo&amp;gt;
+mov    DWORD PTR [rbp-0x24],0x0
+cmp    DWORD PTR [rbp-0x24],0x4
+jg     a71 &amp;lt;main+0x77&amp;gt;
+lea    rax,[rbp-0x14]
+lea    rdx,[rbp-0x20]
+mov    rsi,rdx
+mov    rdi,rax
+call   97a &amp;lt;_ZN3bar4scooEv&amp;gt;
+lea    rax,[rbp-0x14]
+mov    rdi,rax
+call   b88 &amp;lt;_ZN3foo5printEv&amp;gt;
+add    DWORD PTR [rbp-0x24],0x1
+jmp    a46 &amp;lt;main+0x4c&amp;gt;
+mov    eax,0x0
+mov    rcx,QWORD PTR [rbp-0x8]
+xor    rcx,QWORD PTR fs:0x28
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+We store the value of register &lt;code class=&quot;highlighter-rouge&quot;&gt;rdi&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;[rbp-0x28]&lt;/code&gt; in function scoo(),
+hence whatever is stored in &lt;code class=&quot;highlighter-rouge&quot;&gt;rdi&lt;/code&gt; at time of calling would be used as
+instance location of return foo class.
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;lea rax,[rbp-0x14]&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;mov rdi,rax&lt;/code&gt; lead to value &lt;code class=&quot;highlighter-rouge&quot;&gt;rbp-0x14&lt;/code&gt; being passed to scoo as
+location for return foo class. Note that is location is in the stack of &lt;code class=&quot;highlighter-rouge&quot;&gt;main()&lt;/code&gt;
+and not &lt;code class=&quot;highlighter-rouge&quot;&gt;scoo()&lt;/code&gt; like previous case. 
+&lt;/p&gt;
+
+&lt;p&gt;
+Notice that &lt;code class=&quot;highlighter-rouge&quot;&gt;rbp-0x14&lt;/code&gt; is first passed to the foo constructor. This is because of this line
+of code
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;    bar obj(foo(1,1,1));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+Here a temp &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; object has to be initialised and then passed to bar constructor.
+When that constructor is called, the &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; object is not needed, hence compiler
+tries to use that memory slot for the returned &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; object. Ideally it should not have
+optimised this because we have switched off optimisation with &lt;code class=&quot;highlighter-rouge&quot;&gt;-O0&lt;/code&gt;
+but this may be a flaw in GCC. So, instead of picking up garbage values in &lt;code class=&quot;highlighter-rouge&quot;&gt;scoo()&lt;/code&gt;
+it picks up the correct values from the temp variable because of reused stack slot.
+&lt;/p&gt;
+
+&lt;p&gt;
+The proof of this comes from the fact that, when compiled with another compiler like clang,
+this behaviour is not replicated. Hence it is important to know that even the second code has
+the error of shadowing, it just isn’t being seen in the output due to a happy accident.
+&lt;/p&gt;
+
+&lt;p&gt;Our four cents!&lt;/p&gt;
+</description>
+            <pubDate>Sun, 20 May 2018 18:12:00 +0530</pubDate>
+            <link>http://localhost:4000//bposts/copy-constructor-magic.html</link>
+            <guid isPermaLink="true">http://localhost:4000//bposts/copy-constructor-magic.html</guid>
+        </item>
+        
+        <item>
+            <title>Witcher, Game of Thrones and Predestination: Inspirations from Irish Mythology</title>
+            <description>&lt;p&gt;
+I was home for the past one week, having a compulsory vacation enforced by my family. I spent it reading the Witcher series. To those of you who don’t know about them, &lt;a href=&quot;https://en.wikipedia.org/wiki/Andrzej_Sapkowski#The_Witcher_Saga&quot;&gt;The Witcher&lt;/a&gt; is a polish fantasy series by Andrzej Sapkowski. In the opinion of many, what makes them distinctive from fantasy series like LOTR and Harry Potter are the grey shades of morality portrayed in the world. In LOTR and HP, there is a good and there is an evil and at the end of the day, the good has to triumph over evil. In Witcher, every decision taken has varying consequences for different characters; good and bad. This fascinates the eye, because of its &lt;i&gt;natural&lt;/i&gt; appeal.
+&lt;/p&gt;
+&lt;p&gt;
+Game of Thrones, the popular TV series, is the second thing that comes to my mind when you think of a grey portrayal of the world. I have not read the ASOIF books, but I am an avid follower of the show and hence believe I have an idea of the major keypoints of the show. And what I’ll be talking about here are the striking similarities on some of the plotlines of Witcher and Game of Thrones. Some of them are built out of fan theories I read about GoT as well.
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Political and sexual intrigue, although since Witcher centers around one individual and his destiny, the political aspects are perhaps not as elaborate as GoT.&lt;/li&gt;
+&lt;li&gt;Witcher has an elven race &lt;i&gt;Aen Sidhe&lt;/i&gt;, and GoT's white walkers are like &lt;i&gt;sidhe&lt;/i&gt; made of ice, both derived from Ao Si in Irish mythology. We also know that Children of the Forest made White Walkers so they represent &lt;i&gt;Aen Sidhe&lt;/i&gt; better, and then they have a sister race called &lt;i&gt;Aen Elle&lt;/i&gt; which looks like a representation of the Others in Irish mythology, and of WW in GoT. Witcher's &lt;i&gt;Aen Elle&lt;/i&gt; have their own version of rogue riders called the Wild Hunt.&lt;/li&gt;
+&lt;li&gt;A major problem which surrounds the world as per a prophecy is the coming of a great winter; a great iceage, the Big Winter, the Big Chill, Aep Deireadh and many other names used for a long iceage. Witcher brings in a bit of science too by discussing that this will be effectively due to a change in tilt of Earth's axis.&lt;/li&gt;
+&lt;li&gt;Both of them have a central character who can travel through Space and Time. This is Witcher's Cirilla or Ciri, and GoT's Brandon Stark. Although, in the case of GoT, it is only fan theories which talk about a predestination. Witcher, on the other hand, is very explicit to center the story around Ciri's predestination.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+I spent long hours searching for popular Irish mythological stories so we could establish a connection. Witcher was published before ASOIF and ASOIF was published by the time Witcher was well known to the English speaking world. These are just my reflections.
+&lt;/p&gt;
+</description>
+            <pubDate>Sat, 18 Jun 2016 12:56:00 +0530</pubDate>
+            <link>http://localhost:4000//bposts/witcher-got-irish-mytho.html</link>
+            <guid isPermaLink="true">http://localhost:4000//bposts/witcher-got-irish-mytho.html</guid>
+        </item>
+        
+        <item>
+            <title>On Slicing Python Lists</title>
+            <description>&lt;p&gt;
+A lot many are familiar with Python lists and the feature of slicing, although I find the description that most tutorials not intuitive enough. Here is how it goes.&lt;br /&gt;
+Let us start with defining an array of 10 elements
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a = [i for i in range(10)]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+Now, the following I assume you’re familiar with.
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;gt;&amp;gt;&amp;gt; a[3:6]
+[3, 4, 5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+And the way people think about it is selecting elements starting with &lt;i&gt;index 3&lt;/i&gt; till and including the element with &lt;i&gt;index 6-1=5.&lt;/i&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Do you digest that? I cannot. Why do I include the first index while not the second one? If I think in terms of indices, I have to spend my brain power in subtracting the second index by one, and I tell you I am very lazy about that. 
+&lt;br /&gt;
+Then there are people who say that you start with &lt;i&gt;index 3&lt;/i&gt; and choose &lt;i&gt;6-3=3&lt;/i&gt; elements there on. This does work because we see the following happening.
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;gt;&amp;gt;&amp;gt; a[4:4]
+[]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+But I do not understand that if I were inventing slicing, and I would want people to think in terms of an index and a length, why would I not just keep length as the second parameter? In this &lt;b&gt;hypothetical&lt;/b&gt; situation,
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;gt;&amp;gt;&amp;gt; a[3:3]
+[3, 4, 5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+&lt;i&gt;DISCLAIMER: I do not claimer that this is how it went but I’ll now talk about how I like to look at slicing&lt;/i&gt;
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;gt;&amp;gt;&amp;gt; a[3:]
+[3, 4, 5, 6, 7, 8, 9]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+I like to say that doing this &lt;i&gt;skips&lt;/i&gt; the first &lt;i&gt;three&lt;/i&gt; elements and gives the rest.
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;gt;&amp;gt;&amp;gt; a[:6]
+[0, 1, 2, 3, 4, 5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+And this picks the first &lt;i&gt;six&lt;/i&gt; elements. Simple really!
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;gt;&amp;gt;&amp;gt; a[3:6]
+[3, 4, 5]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+This just gives the &lt;i&gt;intersection&lt;/i&gt; of the two.
+&lt;/p&gt;
+&lt;p&gt;
+My two cents.
+&lt;/p&gt;
+</description>
+            <pubDate>Fri, 03 Jun 2016 02:21:00 +0530</pubDate>
+            <link>http://localhost:4000//bposts/splicing.html</link>
+            <guid isPermaLink="true">http://localhost:4000//bposts/splicing.html</guid>
+        </item>
+        
+        <item>
+            <title>Circle enclosing N lattice points</title>
+            <description>&lt;p&gt;Did you know?&lt;br /&gt;For every natural number N, there exists a circle enclosing exactly N lattice points!&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;image left&quot;&gt;&lt;img src=&quot;https://media.giphy.com/media/26vUCSK9K5wTm5fwI/giphy.gif&quot; alt=&quot;gif demonstrating fact&quot; /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The above was posted on the Facebook group of Math n Physics Club of my institute. It triggered a discussion about the center of such a circle with one guy commenting without reason enough that it has to be an irrational point and any irrational point would do.
+&lt;/p&gt;
+&lt;p&gt;I found it interesting and thought over it while taking a shower. &lt;i&gt;If&lt;/i&gt; the center is at origin, then this is impossible. If you try to enclose a point at a distance $\sqrt{d^2}$, you will find that $d^2 = x^2 + y^2$ where you don’t have a unique choice of $x$ and $y$.&lt;/p&gt;
+&lt;p&gt;Now note that if the center is a rational point, say $(\frac{a}{b},\frac{c}{d})$, then you can scale the space by $bd$, then the center lies at $(ad,bc)$ and then a simple translation will take you to origin and our hypothesis is reduced to the above case raising a contradiction against our assumption that the center is a rational point.&lt;/p&gt;
+&lt;p&gt;Thus, the center must be an irrational point. I do not know if any irrational point would do though.&lt;/p&gt;
+&lt;p&gt;My two cents!&lt;/p&gt;
+</description>
+            <pubDate>Sat, 14 May 2016 20:01:00 +0530</pubDate>
+            <link>http://localhost:4000//bposts/n-points-in-circle.html</link>
+            <guid isPermaLink="true">http://localhost:4000//bposts/n-points-in-circle.html</guid>
+        </item>
+        
+    </channel>
+</rss>
