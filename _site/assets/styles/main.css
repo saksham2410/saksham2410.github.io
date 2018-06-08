@@ -1321,7 +1321,7 @@ h4, .ft-tabs .tabs-list li a .tab-group .tab-heading, .testimonials-3col .t-item
 }
 
 h5, .ft-boxed-hover ul li .hover-content .ft-heading, .ft-tabs .tabs-list li a .tab-group .tab-info, .sidebar .comments-widget .widget-item span .widget-comm-title, .comingsoon .content-wrapper .content-inner .cs-timer .item .title-timer, .shop-layout-options span {
-  font-size: 1em;
+  font-size: 0.75em;
   letter-spacing: 2px;
 }
 
@@ -7874,6 +7874,11 @@ form .input-error-2:focus {
   height: 100vh;
   padding-left: 10%;
 }
+@media screen and (max-width: 736px){
+.main-demo-hero .hero-content-wrapper .hero-content, .fs-video-hero .hero-content-wrapper .hero-content, .fw-video-hero .hero-content-wrapper .hero-content, .text-slider-hero .hero-content-wrapper .hero-content, .freelancer-hero .hero-content-wrapper .hero-content, .agency2-hero .hero-content-wrapper .hero-content, .animated-hero .hero-content-wrapper .hero-content, .web-app-hero .hero-content-wrapper .hero-content {
+display: inherit!important;
+}}
+
 
 .main-demo-hero .hero-content-wrapper .hero-content, .fs-video-hero .hero-content-wrapper .hero-content, .fw-video-hero .hero-content-wrapper .hero-content, .text-slider-hero .hero-content-wrapper .hero-content, .freelancer-hero .hero-content-wrapper .hero-content, .agency2-hero .hero-content-wrapper .hero-content, .animated-hero .hero-content-wrapper .hero-content, .web-app-hero .hero-content-wrapper .hero-content {
   display: table-cell;
