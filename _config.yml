@@ -11,9 +11,9 @@ email: hey@sakshamgupta.me
 description: >- # this means to ignore newlines until "baseurl:"
   I am an everyday developer who likes to turn dreams into reality. My magical staff is an upcoming undergraduate degree in Computer Science mixed with experience in Data Science and management.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "https://sakshamgupta.me" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: 
+github_username:  Saksham2410
 name: Saksham Gupta
 url: https://sakshamgupta.me
 
