@@ -33,7 +33,7 @@ var configs = (function() {
       "Change file timestamps. If the file doesn't exist, it's created an empty one.",
     sudo_help: "Execute a command as the superuser.",
     welcome:
-      "Welcome to my personal website. Please open the navigation drawer for more options",
+      "11111111111111111111111111\n11111100111111111100111111\n11110001111100111110001111\n11000001111000011110000011\n10000000111000011100000001\n10000000000000000000000001\n00000000000000000000000000\n00000000000000000000000000\n10000000000000000000000001\n10000110001000010001100001\n11001111111100111111110011\n11100111111100111111100111\n11111111111111111111111111\nWelcome to my personal website. Please open the navigation drawer for more options",
     internet_explorer_warning:
       "NOTE: I see you're using internet explorer, this website won't work properly.",
     welcome_file_name: "welcome_message.txt",
