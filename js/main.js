@@ -69,7 +69,7 @@ var files = (function () {
     Singleton.defaultOptions = {
         "about.txt": "Hi, welcome to my personal website. I'm Saksham Gupta, a final year undegraduate student at IIT Jodhpur pursuing B.Tech in CSE. You can find all the contact details here.",
         "contact.txt": "gupta.10@iitj.ac.in",
-        "LinkedIn.txt": "https://www.linkedin.com/saksham2410/",
+        "LinkedIn.txt": "https://www.linkedin.com/in/saksham2410/",
         "GitHub.txt": "https://github.com/saksham2410/",
         "Facebook.txt": "https://facebook.com/esaksham/",
         "Instagram.txt": "https://instagram.com/sakshammm__/"
