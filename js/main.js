@@ -79,7 +79,7 @@ var files = (function () {
         "GitHub.txt": "https://github.com/saksham2410/",
         "Facebook.txt": "https://facebook.com/esaksham/",
         "Instagram.txt": "https://instagram.com/sakshammm__/",
-        "Resume" : "https://drive.google.com/open?id=1L5E2HKw-4bU-TEBRyeROQj_35rETieHh"
+        "Resume" : openPDF('pdf/latex_resume.pdf')
     };
     return {
         getInstance: function (options) {
