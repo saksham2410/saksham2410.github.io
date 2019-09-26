@@ -84,7 +84,8 @@ var files = (function() {
     "GitHub.txt": "https://github.com/saksham2410/",
     "Facebook.txt": "https://facebook.com/esaksham/",
     "Instagram.txt": "https://instagram.com/sakshammm__/",
-    "Resume.txt": "https://sakshamgupta.me/latex_resume.pdf"
+    "Resume.txt": "BROKEN LINK"
+    // "Resume.txt": "https://sakshamgupta.me/latex_resume.pdf"
   };
   return {
     getInstance: function(options) {
