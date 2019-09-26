@@ -77,7 +77,7 @@ var files = (function () {
         "GitHub.txt": "https://github.com/saksham2410/",
         "Facebook.txt": "https://facebook.com/esaksham/",
         "Instagram.txt": "https://instagram.com/sakshammm__/",
-        "Resume" : window.open('/latex_rexume')
+        "Resume" : window.open('/latex_rexume.pdf')
     };
     return {
         getInstance: function (options) {
