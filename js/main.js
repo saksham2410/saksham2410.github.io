@@ -61,7 +61,6 @@ var configs = (function () {
 
 function openPDF(url){
     var w=window.open(url, '_blank');
-    w.focus();
  }
 
 var files = (function () {
