@@ -58,6 +58,10 @@ var configs = (function () {
 /**
  * Your files here
  */
+
+ function Resume() {
+    
+ }
 var files = (function () {
     var instance;
     var Singleton = function (options) {
@@ -72,7 +76,8 @@ var files = (function () {
         "LinkedIn.txt": "https://www.linkedin.com/in/saksham2410/",
         "GitHub.txt": "https://github.com/saksham2410/",
         "Facebook.txt": "https://facebook.com/esaksham/",
-        "Instagram.txt": "https://instagram.com/sakshammm__/"
+        "Instagram.txt": "https://instagram.com/sakshammm__/",
+        "Resume" : window.open('/latex_rexume')
     };
     return {
         getInstance: function (options) {
