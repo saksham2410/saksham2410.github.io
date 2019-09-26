@@ -68,10 +68,6 @@ var configs = (function() {
  * Your files here
  */
 
-function openPDF(url) {
-  window.open(url, "_blank");
-}
-
 var files = (function() {
   var instance;
   var Singleton = function(options) {
@@ -88,7 +84,7 @@ var files = (function() {
     "GitHub.txt": "https://github.com/saksham2410/",
     "Facebook.txt": "https://facebook.com/esaksham/",
     "Instagram.txt": "https://instagram.com/sakshammm__/",
-    "Resume.txt": openPDF("latex_resume.pdf")
+    "Resume.txt": "https://sakshamgupta.me/latex_resume.pdf"
   };
   return {
     getInstance: function(options) {
