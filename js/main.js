@@ -33,7 +33,7 @@ var configs = (function() {
       "Change file timestamps. If the file doesn't exist, it's created an empty one.",
     sudo_help: "Execute a command as the superuser.",
     welcome:
-      "Welcome to my personal website. Please open the navigation drawer for more options",
+      "Welcome to my personal website. Please open the navigation drawer for more options. To visit Hawkshaw, click on Hawkshaw from the drawer or type Hawkshaw",
     internet_explorer_warning:
       "NOTE: I see you're using internet explorer, this website won't work properly.",
     welcome_file_name: "welcome_message.txt",
@@ -85,7 +85,7 @@ var files = (function() {
     "Facebook.txt": "https://facebook.com/esaksham/",
     "Instagram.txt": "https://instagram.com/sakshammm__/",
     "Resume.txt": "BROKEN LINK",
-    "Hawkshaw" : "https://sakshamgupta.me/hawkshaw/"
+    "Hawkshaw.txt" : "https://sakshamgupta.me/hawkshaw/"
     // "Resume.txt": "https://sakshamgupta.me/latex_resume.pdf"
   };
   return {
