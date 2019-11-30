@@ -78,13 +78,14 @@ var files = (function() {
   };
   Singleton.defaultOptions = {
     "about.txt":
-      "Hi, welcome to my personal website. I'm Saksham Gupta, a final year undegraduate student at IIT Jodhpur pursuing B.Tech in CSE. You can find all the contact details here.",
+      "Hi, welcome to my personal website. I'm Saksham Gupta, a final year undegraduate student at IIT Jodhpur pursuing B.Tech in CSE. You can find all the contact details here. To visit Hawkshaw, click on Hawkshaw from the drawer",
     "contact.txt": "gupta.10@iitj.ac.in",
     "LinkedIn.txt": "https://www.linkedin.com/in/saksham2410/",
     "GitHub.txt": "https://github.com/saksham2410/",
     "Facebook.txt": "https://facebook.com/esaksham/",
     "Instagram.txt": "https://instagram.com/sakshammm__/",
-    "Resume.txt": "BROKEN LINK"
+    "Resume.txt": "BROKEN LINK",
+    "Hawkshaw" : "https://sakshamgupta.me/hawkshaw/"
     // "Resume.txt": "https://sakshamgupta.me/latex_resume.pdf"
   };
   return {
