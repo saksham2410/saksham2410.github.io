@@ -73,6 +73,7 @@ h5,
     line-height: 1;
     padding: 25px 75px;
     color: #fefefe;
+    margin: 10px;
     display: inline-block;
     white-space: nowrap;
     text-align: center;
@@ -169,12 +170,18 @@ select.form-input {
 /*Header*/
 
 #s-header {
-    padding-top: 108px;
+    /* padding-top: 108px; */
     padding-bottom: 460px;
     background: url("../img/main-bg.png") center no-repeat;
     background-size: cover;
     position: relative;
     overflow: hidden;
+}
+
+@media (max-width: 1000.98px) {
+    #s-header {
+        padding-top: 108px;
+    }
 }
 
 #s-header .img_wrap {
@@ -529,6 +536,10 @@ select.form-input {
     color: #c9c9c9;
     font-weight: 700;
     background: url("../img/svg/arrow-bottom.svg") right center no-repeat;
+}
+
+#s-pricing .pricing .open-list.open {
+    background-image: url("../img/svg/arrow-top.svg");
 }
 
 #s-pricing .pricing .open-list.open {

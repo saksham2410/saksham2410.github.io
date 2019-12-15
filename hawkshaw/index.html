@@ -5,8 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>HawkShaw</title>
-	
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+	<meta content="Hawkshaw is an Android Spy RAT app which can monitor all android devices. Monitor WhatsApp chats, Call recordings, GPS locations, Contacts, Call Logs, File Explorer & more without root. Also Spy Facebook, Instagram, Tinder & Gmail." name=description>
+	<link href=favicon.png rel=icon>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 	
@@ -43,10 +43,13 @@
 						<p>Monitor WhatsApp chats, Call recordings, GPS locations, Contacts, Call Logs, File Explorer & more without root. Also Spy Facebook, Instagram, Tinder, Skype, Telegram & Gmail. Access full control of the device </p>
 						<div class="row button_wrap">
 							<div class="col-6">
-								<a href="http://hawkshawspy.com" class="btn-custom">Login</a>
+								<a href="javascript:LoginFunc('login');" class="btn-custom">Login</a>
 							</div>
 							<div class="col-6">
-								<a href="http://hawkshawspy.com" class="btn-custom-black">Register</a>
+								<a href="javascript:LoginFunc('register');" class="btn-custom-black">Register</a>
+							</div>
+							<div class="col-6">
+								<a href="javascript:LoginFunc('download');" class="btn-custom-black">Download App</a>
 							</div>
 						</div>				
 					</div>
@@ -192,7 +195,7 @@
 					<p class="PCA-text">The best solution out there</p>
 				</div>
 				<div class="col-md-4">
-					<a href="http://hawkshawspy.com" class="PCA-button btn-custom">Try today!</a>
+					<a href="http://hawkshawspy.com/premium" class="PCA-button btn-custom">Try today! 2 days free trial included.</a>
 				</div>
 			</div>
 		</div>
@@ -216,7 +219,7 @@
 							</section>
 						</div>
 						<p class="pricing-cost">$29.99</p>
-						<a href="http://hawkshawspy.com" class="btn-custom pricing-btn">Get Started</a>
+						<a href="http://hawkshawspy.com/premium" class="btn-custom pricing-btn">Get Started</a>
 					</article>	
 				</div>
 				<div class="col-lg-3 col-md-6">
@@ -233,7 +236,7 @@
 							</section>
 						</div>
 						<p class="pricing-cost">$74.99</p>
-						<a href="http://hawkshawspy.com" class="btn-custom pricing-btn">Get Started</a>
+						<a href="http://hawkshawspy.com/premium" class="btn-custom pricing-btn">Get Started</a>
 					</article>	
 				</div>
 				<div class="col-lg-3 col-md-6">
@@ -250,7 +253,7 @@
 							</section>
 						</div>
 						<p class="pricing-cost">$119.99</p>
-						<a href="http://hawkshawspy.com" class="btn-custom pricing-btn">Get Started</a>
+						<a href="http://hawkshawspy.com/premium" class="btn-custom pricing-btn">Get Started</a>
 					</article>	
 				</div>
 				<div class="col-lg-3 col-md-6">
@@ -268,7 +271,7 @@
 							</section>
 						</div>
 						<p class="pricing-cost">Customised</p>
-						<a href="http://hawkshawspy.com" class="btn-custom pricing-btn">Get Started</a>
+						<a href="http://hawkshawspy.com/premium" class="btn-custom pricing-btn">Get Started</a>
 					</article>	
 				</div>
 			</div>
@@ -289,20 +292,24 @@
 				</div>
 				<div class="col-lg-3 col-md-2 col-6 section-site_1_wrap">
 					<ul class="list-unstyled section-site">
-						<li><a href="#s-pricing" class="flowing-scroll">Privay policy</a></li>
+						<li><a href="javascript:LoginFunc('privacy');" class="flowing-scroll">Privay policy</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-2 col-6 section-site_2_wrap">
 					<ul class="list-unstyled section-site ml-0">
-						<li><a href="#s-features" class="flowing-scroll">Contact Us</a></li>
+						<li><a href="javascript:LoginFunc('contact');" class="flowing-scroll">Contact Us</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<a href="#" class="scroll-top"><img src="img/svg/scroll-top.svg" alt="scroll top"></a>
+		<a href="javascript:LoginFunc('download');" class="scroll-top"><img src="img/svg/downloadmain.svg" alt="Download"></a>
 	</footer>
 <script src="js/bootstrap.bundle.min.js"></script>
-	
+	<script type="text/javascript">
+    function LoginFunc(arg1) {
+		window.location.replace(location.protocol+'//'+location.host+'/'+arg1)
+	}
+</script>
 	<script src="js/main.js"></script>
 </body>
 </html>
