@@ -1785,6 +1785,12 @@ p {
     }
 }
 
+@media (min-width: 767px) {
+    .image-hero {
+        margin-left: 80px;
+    }
+}
+
 @media (max-width: 767px) {
     .nav {
         flex-wrap: unset;
