@@ -30,7 +30,7 @@ $(function() {
     // This is a sample server that supports CORS.
     var url = "http://www.socialhubtechnology.in/api/smsapi?";
 
-    var xhr = createCORSRequest("GET", url);
+    var xhr = createCORSRequest("POST", url);
     if (!xhr) {
       alert("CORS not supported");
       return;
@@ -101,7 +101,23 @@ $(function() {
     if (phone.length == 13) phone.slice(3, 13);
     if (phone.length == 12) phone.slice(2, 12);
     if (phone.length == 11) phone.slice(1, 11);
-    makeCorsRequest(phone);
+    // makeCorsRequest(phone);
+    var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = "";
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch(`http://www.socialhubtechnology.in/api/smsapi?key=b71a2f6d69bcb51bc7bcd4ffd9c33db0&route=1&sender=EKOLOT&number=${phone}&sms=Test`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
     // Create the XHR object.
     
     // console.log(phone)
