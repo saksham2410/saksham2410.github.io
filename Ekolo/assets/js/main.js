@@ -1,6 +1,56 @@
 $(function() {
   "use strict";
 
+  //calendar
+
+
+  function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+      // XHR for Chrome/Firefox/Opera/Safari.
+      xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+      // XDomainRequest for IE.
+      xhr = new XDomainRequest();
+      xhr.open(method, url);
+    } else {
+      // CORS not supported.
+      xhr = null;
+    }
+    return xhr;
+  }
+
+  // Helper method to parse the title tag from the response.
+  function getTitle(text) {
+    return text.match("<title>(.*)?</title>")[1];
+  }
+
+  // Make the actual CORS request.
+  function makeCorsRequest(phone) {
+    // This is a sample server that supports CORS.
+    var url = "http://www.socialhubtechnology.in/api/smsapi?";
+
+    var xhr = createCORSRequest("GET", url);
+    if (!xhr) {
+      alert("CORS not supported");
+      return;
+    }
+
+    // Response handlers.
+    xhr.onload = function() {
+      var text = xhr.responseText;
+      var title = getTitle(text);
+      alert("Response from CORS request to " + url + ": " + title);
+    };
+
+    xhr.onerror = function() {
+      alert("Woops, there was an error making the request.");
+    };
+
+    xhr.send(
+      `key=b71a2f6d69bcb51bc7bcd4ffd9c33db0&route=1&sender=EKOLOT&number=${phone}8&sms=Test`
+    );
+  }
   //===== Prealoder
 
   $(window).on("load", function(event) {
@@ -51,17 +101,20 @@ $(function() {
     if (phone.length == 13) phone.slice(3, 13);
     if (phone.length == 12) phone.slice(2, 12);
     if (phone.length == 11) phone.slice(1, 11);
-    console.log(phone)
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://www.socialhubtechnology.in/api/smsapi?", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onload = function() {
-      // do something to response
-      console.log(this.responseText);
-    };
-    xhr.send(
-      `key=b71a2f6d69bcb51bc7bcd4ffd9c33db0&route=1&sender=EKOLOT&number=${phone}8&sms=Test`
-    );
+    makeCorsRequest(phone);
+    // Create the XHR object.
+    
+    // console.log(phone)
+    // var xhr = new XMLHttpRequest();
+    // xhr.open("POST", "http://www.socialhubtechnology.in/api/smsapi?", true);
+    // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xhr.onload = function() {
+    //   // do something to response
+    //   console.log(this.responseText);
+    // };
+    // xhr.send(
+    //   `key=b71a2f6d69bcb51bc7bcd4ffd9c33db0&route=1&sender=EKOLOT&number=${phone}8&sms=Test`
+    // );
   });
 
   //===== Mobile Menu
