@@ -3,54 +3,53 @@ $(function() {
 
   //calendar
 
+//   function createCORSRequest(method, url) {
+//     var xhr = new XMLHttpRequest();
+//     if ("withCredentials" in xhr) {
+//       // XHR for Chrome/Firefox/Opera/Safari.
+//       xhr.open(method, url, true);
+//     } else if (typeof XDomainRequest != "undefined") {
+//       // XDomainRequest for IE.
+//       xhr = new XDomainRequest();
+//       xhr.open(method, url);
+//     } else {
+//       // CORS not supported.
+//       xhr = null;
+//     }
+//     return xhr;
+//   }
 
-  function createCORSRequest(method, url) {
-    var xhr = new XMLHttpRequest();
-    if ("withCredentials" in xhr) {
-      // XHR for Chrome/Firefox/Opera/Safari.
-      xhr.open(method, url, true);
-    } else if (typeof XDomainRequest != "undefined") {
-      // XDomainRequest for IE.
-      xhr = new XDomainRequest();
-      xhr.open(method, url);
-    } else {
-      // CORS not supported.
-      xhr = null;
-    }
-    return xhr;
-  }
+//   // Helper method to parse the title tag from the response.
+//   function getTitle(text) {
+//     return text.match("<title>(.*)?</title>")[1];
+//   }
 
-  // Helper method to parse the title tag from the response.
-  function getTitle(text) {
-    return text.match("<title>(.*)?</title>")[1];
-  }
+//   // Make the actual CORS request.
+//   function makeCorsRequest(phone) {
+//     // This is a sample server that supports CORS.
+//     var url = "http://www.socialhubtechnology.in/api/smsapi?";
 
-  // Make the actual CORS request.
-  function makeCorsRequest(phone) {
-    // This is a sample server that supports CORS.
-    var url = "http://www.socialhubtechnology.in/api/smsapi?";
+//     var xhr = createCORSRequest("POST", url);
+//     if (!xhr) {
+//       alert("CORS not supported");
+//       return;
+//     }
 
-    var xhr = createCORSRequest("POST", url);
-    if (!xhr) {
-      alert("CORS not supported");
-      return;
-    }
+//     // Response handlers.
+//     xhr.onload = function() {
+//       var text = xhr.responseText;
+//       var title = getTitle(text);
+//       alert("Response from CORS request to " + url + ": " + title);
+//     };
 
-    // Response handlers.
-    xhr.onload = function() {
-      var text = xhr.responseText;
-      var title = getTitle(text);
-      alert("Response from CORS request to " + url + ": " + title);
-    };
+//     xhr.onerror = function() {
+//       alert("Woops, there was an error making the request.");
+//     };
 
-    xhr.onerror = function() {
-      alert("Woops, there was an error making the request.");
-    };
-
-    xhr.send(
-      `key=b71a2f6d69bcb51bc7bcd4ffd9c33db0&route=1&sender=EKOLOT&number=${phone}8&sms=Test`
-    );
-  }
+//     xhr.send(
+//       `key=b71a2f6d69bcb51bc7bcd4ffd9c33db0&route=1&sender=EKOLOT&number=${phone}8&sms=Test`
+//     );
+//   }
   //===== Prealoder
 
   $(window).on("load", function(event) {
@@ -86,14 +85,29 @@ $(function() {
     }
   });
 
-  $.scrollIt({
-    scrollTime: 800
-  });
+//   $.scrollIt({
+//     scrollTime: 800
+//   });
 
   //===== close navbar-collapse when a  clicked
 
   $(".navbar-nav a").on("click", function() {
     $(".navbar-collapse").removeClass("show");
+  });
+
+  $(".main-btn-email").on("click", function() {
+    Email.send({
+        Host: "smtp.gmail.com",
+        Username : "desmondmile03@gmail.com",
+        Password : "Desmond69",
+        To : 'gupta.10@iitj.ac.in',
+        From : "saksham.stephens@gmail.com",
+        Subject : "Testing",
+        Body : "Body",
+    })
+    .then(function(message){
+        alert("mail sent successfully")
+    });
   });
 
   $(".main-btn").on("click", function() {
@@ -103,23 +117,27 @@ $(function() {
     if (phone.length == 11) phone.slice(1, 11);
     // makeCorsRequest(phone);
     var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
 
-var raw = "";
+    var raw = "";
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
 
-fetch(`http://www.socialhubtechnology.in/api/smsapi?key=b71a2f6d69bcb51bc7bcd4ffd9c33db0&route=1&sender=EKOLOT&number=${phone}&sms=Test`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+    fetch(
+      `http://www.socialhubtechnology.in/api/smsapi?key=b71a2f6d69bcb51bc7bcd4ffd9c33db0&route=1&sender=EKOLOT&number=${phone}&sms=Get+Eco-friendly+Rides+now.Download+Ekolo+at+https://play.google.com/store/apps/details?id=com.ekolo2`,
+      requestOptions
+    )
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log("error", error));
     // Create the XHR object.
-    
+
     // console.log(phone)
     // var xhr = new XMLHttpRequest();
     // xhr.open("POST", "http://www.socialhubtechnology.in/api/smsapi?", true);

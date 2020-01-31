@@ -105,7 +105,7 @@
                             <!-- navbar collapse -->
 
                             <div class="navbar-btn d-none d-sm-inline-block">
-                                <a class="main-btn" data-scroll-nav="0" href="#pricing">Download</a>
+                                <a class="main-btn-download" data-scroll-nav="0" href="https://play.google.com/store/apps/details?id=com.ekolo2">Download</a>
                             </div>
                         </nav>
                         <!-- navbar -->
@@ -309,7 +309,7 @@
                                                 <div class="circle" id="circles-2"></div>
                                                 <div class="progress-content">
                                                     <h4 class="progress-title">No<br> Fuel Cost.</h4>
-                                                    <a class="main-btn" data-scroll-nav="0" href="#pricing">Book Now</a>
+                                                    <a class="main-btn-book" data-scroll-nav="0" href="#pricing">Book Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -426,14 +426,6 @@
                     </div>
                 </div>
                 <!-- row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="service-btn text-center pt-25 pb-15">
-                            <a class="main-btn main-btn-2" href="#">All Services</a>
-                        </div>
-                        <!-- service btn -->
-                    </div>
-                </div>
                 <!-- row -->
             </div>
             <!-- service wrapper -->
@@ -609,33 +601,33 @@
                     <div class="contact-wrapper-form pt-115  wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.5s">
                         <h4 class="contact-title pb-10"><i class="lni-envelope"></i> Leave <span>A Message.</span></h4>
 
-                        <form id="contact-form" action="assets/contact.php" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="contact-form mt-45">
+                        <form id="contact-form" onsubmit="return sendEmail()">
+                            <div class=" row ">
+                                <div class="col-md-6 ">
+                                    <div class="contact-form mt-45 ">
                                         <label>Enter Your Name</label>
-                                        <input type="text" name="name" placeholder="Full Name">
+                                        <input type="text " name="name " id="name " placeholder="Full Name ">
                                     </div>
                                     <!-- contact-form -->
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="contact-form mt-45">
+                                <div class="col-md-6 ">
+                                    <div class="contact-form mt-45 ">
                                         <label>Enter Your Email</label>
-                                        <input type="email" name="email" placeholder="Email">
+                                        <input type="email " name="email " id="email " placeholder="Email ">
                                     </div>
                                     <!-- contact-form -->
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="contact-form mt-45">
+                                <div class="col-md-12 ">
+                                    <div class="contact-form mt-45 ">
                                         <label>Your Message</label>
-                                        <textarea name="message" placeholder="Enter your message..."></textarea>
+                                        <textarea name="message " id="message " placeholder="Enter your message... "></textarea>
                                     </div>
                                     <!-- contact-form -->
                                 </div>
-                                <p class="form-message"></p>
-                                <div class="col-md-12">
-                                    <div class="contact-form mt-45">
-                                        <button type="submit" class="main-btn">Send Now</button>
+                                <p class="form-message "></p>
+                                <div class="col-md-12 ">
+                                    <div class="contact-form mt-45 ">
+                                        <button type="submit " id="sendEmail " class="main-btn-email ">Send Now</button>
                                     </div>
                                     <!-- contact-form -->
                                 </div>
@@ -655,60 +647,60 @@
 
     <!--====== FOOTER PART START ======-->
 
-    <footer id="footer" class="footer-area bg_cover" style="background-image: url(assets/images/footer-bg.jpg)">
-        <div class="container">
-            <div class="footer-widget pt-30 pb-70">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 order-sm-1 order-lg-1">
-                        <div class="footer-about pt-40">
-                            <a href="#">
-                                <img src="assets/images/logo2.png" alt="Logo">
+    <footer id="footer " class="footer-area bg_cover " style="background-image: url(assets/images/footer-bg.jpg) ">
+        <div class="container ">
+            <div class="footer-widget pt-30 pb-70 ">
+                <div class="row ">
+                    <div class="col-lg-3 col-sm-6 order-sm-1 order-lg-1 ">
+                        <div class="footer-about pt-40 ">
+                            <a href="# ">
+                                <img src="assets/images/logo2.png " alt="Logo ">
                             </a>
-                            <p class="text">Get E-rides at affordable prices</p>
+                            <p class="text ">Get E-rides at affordable prices</p>
                         </div>
                         <!-- footer about -->
                     </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-3 order-lg-2">
-                        <div class="footer-link pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">Services</h5>
+                    <div class="col-lg-3 col-sm-6 order-sm-3 order-lg-2 ">
+                        <div class="footer-link pt-40 ">
+                            <div class="footer-title ">
+                                <h5 class="title ">Services</h5>
                             </div>
                             <ul>
-                                <li><a href="#">E-bike rides</a></li>
-                                <li><a href="#">Rent a bike</a></li>
+                                <li><a href="# ">E-bike rides</a></li>
+                                <li><a href="# ">Rent a bike</a></li>
                             </ul>
                         </div>
                         <!-- footer link -->
                     </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-4 order-lg-3">
-                        <div class="footer-link pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">About Us</h5>
+                    <div class="col-lg-3 col-sm-6 order-sm-4 order-lg-3 ">
+                        <div class="footer-link pt-40 ">
+                            <div class="footer-title ">
+                                <h5 class="title ">About Us</h5>
                             </div>
                             <ul>
-                                <li><a href="#">Overview</a></li>
-                                <li><a href="#">Why us</a></li>
-                                <li><a href="#">We're Hiring!</a></li>
-                                <li><a href="#">Team</a></li>
+                                <li><a href="# ">Overview</a></li>
+                                <li><a href="# ">Why us</a></li>
+                                <li><a href="# ">We're Hiring!</a></li>
+                                <li><a href="# ">Team</a></li>
                             </ul>
                         </div>
                         <!-- footer link -->
                     </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-2 order-lg-4">
-                        <div class="footer-contact pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">Contact Info</h5>
+                    <div class="col-lg-3 col-sm-6 order-sm-2 order-lg-4 ">
+                        <div class="footer-contact pt-40 ">
+                            <div class="footer-title ">
+                                <h5 class="title ">Contact Info</h5>
                             </div>
-                            <div class="contact pt-10">
-                                <p class="text">EKOLO TECHNOLOGIES GAUTAM MARG, VAISHALI NAGAR <br> JAIPUR-302021
+                            <div class="contact pt-10 ">
+                                <p class="text ">EKOLO TECHNOLOGIES GAUTAM MARG, VAISHALI NAGAR <br> JAIPUR-302021
                                     <p>
-                                        <p class="text">Ekolo.help@gmail.com</p>
+                                        <p class="text ">Ekolo.help@gmail.com</p>
 
-                                        <ul class="social mt-40">
-                                            <li><a href="#"><i class="lni-facebook"></i></a></li>
-                                            <li><a href="#"><i class="lni-twitter"></i></a></li>
-                                            <li><a href="#"><i class="lni-instagram"></i></a></li>
-                                            <li><a href="#"><i class="lni-linkedin"></i></a></li>
+                                        <ul class="social mt-40 ">
+                                            <li><a href="https://www.linkedin.com/company/ekolo-india "><i class="lni-facebook "></i></a></li>
+                                            <li><a href="# "><i class="lni-twitter "></i></a></li>
+                                            <li><a href="https://www.instagram.com/ekolo_in/ "><i class="lni-instagram "></i></a></li>
+                                            <li><a href="https://www.facebook.com/ekolosawari/ "><i class="lni-linkedin "></i></a></li>
                                         </ul>
                             </div>
                             <!-- contact -->
@@ -719,8 +711,8 @@
                 <!-- row -->
             </div>
             <!-- footer widget -->
-            <div class="footer-copyright text-center">
-                <p class="text">© 2020 <a href="https://ekolo.co.in" rel="nofollow">Ekolo Technologies</a> All Rights Reserved.</p>
+            <div class="footer-copyright text-center ">
+                <p class="text ">© 2020 <a href="https://ekolo.co.in " rel="nofollow ">Ekolo Technologies</a> All Rights Reserved.</p>
             </div>
         </div>
         <!-- container -->
@@ -730,7 +722,7 @@
 
     <!--====== BACK TOP TOP PART START ======-->
 
-    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+    <a href="# " class="back-to-top "><i class="lni-chevron-up "></i></a>
 
     <!--====== BACK TOP TOP PART ENDS ======-->
 
@@ -738,47 +730,53 @@
 
 
     <!--====== Jquery js ======-->
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="assets/js/vendor/jquery-1.12.4.min.js "></script>
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js "></script>
 
     <!--====== Bootstrap js ======-->
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/popper.min.js "></script>
+    <script src="assets/js/bootstrap.min.js "></script>
 
     <!--====== Slick js ======-->
-    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/slick.min.js "></script>
 
     <!--====== Isotope js ======-->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js "></script>
+    <script src="assets/js/isotope.pkgd.min.js "></script>
 
     <!--====== Counter Up js ======-->
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/waypoints.min.js "></script>
+    <script src="assets/js/jquery.counterup.min.js "></script>
 
     <!--====== Circles js ======-->
-    <script src="assets/js/circles.min.js"></script>
+    <script src="assets/js/circles.min.js "></script>
 
     <!--====== Appear js ======-->
-    <script src="assets/js/jquery.appear.min.js"></script>
+    <script src="assets/js/jquery.appear.min.js "></script>
 
     <!--====== WOW js ======-->
-    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/wow.min.js "></script>
 
     <!--====== Headroom js ======-->
-    <script src="assets/js/headroom.min.js"></script>
+    <script src="assets/js/headroom.min.js "></script>
 
     <!--====== Jquery Nav js ======-->
-    <script src="assets/js/jquery.nav.js"></script>
+    <script src="assets/js/jquery.nav.js "></script>
 
     <!--====== Scroll It js ======-->
-    <script src="assets/js/scrollIt.min.js"></script>
+    <!-- <script src="assets/js/scrollIt.min.js "></script> -->
 
     <!--====== Magnific Popup js ======-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js "></script>
 
     <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js "></script>
+    <script src="https://smtpjs.com/v3/smtp.js "></script>
+    <script>
+        function sendEmail() {
+            alert('Email sent successfully')
+        }
+    </script>
 
 </body>
 

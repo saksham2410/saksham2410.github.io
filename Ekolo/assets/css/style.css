@@ -184,6 +184,120 @@ p {
     ;
 }
 
+.main-btn-email {
+    display: inline-block;
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid #01b948;
+    ;
+    padding: 0 30px;
+    font-size: 16px;
+    height: 55px;
+    line-height: 51px;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 5;
+    -webkit-transition: all 0.4s ease-out 0s;
+    -moz-transition: all 0.4s ease-out 0s;
+    -ms-transition: all 0.4s ease-out 0s;
+    -o-transition: all 0.4s ease-out 0s;
+    transition: all 0.4s ease-out 0s;
+    background-color: #01b948;
+    ;
+}
+
+.main-btn-email:hover {
+    background-color: rgba(241, 72, 54, 0.3);
+    color: #01b948;
+    ;
+    border-color: #01b948;
+    ;
+}
+
+.main-btn-download {
+    display: inline-block;
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid #01b948;
+    ;
+    padding: 0 30px;
+    font-size: 16px;
+    height: 55px;
+    line-height: 51px;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 5;
+    -webkit-transition: all 0.4s ease-out 0s;
+    -moz-transition: all 0.4s ease-out 0s;
+    -ms-transition: all 0.4s ease-out 0s;
+    -o-transition: all 0.4s ease-out 0s;
+    transition: all 0.4s ease-out 0s;
+    background-color: #01b948;
+    ;
+}
+
+.main-btn-download:hover {
+    background-color: rgba(241, 72, 54, 0.3);
+    color: #01b948;
+    ;
+    border-color: #01b948;
+    ;
+}
+
+.main-btn-book {
+    display: inline-block;
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid #01b948;
+    ;
+    padding: 0 30px;
+    font-size: 16px;
+    height: 55px;
+    line-height: 51px;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 5;
+    -webkit-transition: all 0.4s ease-out 0s;
+    -moz-transition: all 0.4s ease-out 0s;
+    -ms-transition: all 0.4s ease-out 0s;
+    -o-transition: all 0.4s ease-out 0s;
+    transition: all 0.4s ease-out 0s;
+    background-color: #01b948;
+    ;
+}
+
+.main-btn-book:hover {
+    background-color: rgba(241, 72, 54, 0.3);
+    color: #01b948;
+    ;
+    border-color: #01b948;
+    ;
+}
+
 .main-btn.main-btn-2 {
     background-color: #fff;
     color: #01b948;
@@ -1787,7 +1901,13 @@ p {
 
 @media (min-width: 767px) {
     .image-hero {
-        margin-left: 80px;
+        margin-left: 125px;
+    }
+}
+
+@media (max-width: 767px) {
+    .image-hero {
+        margin-left: 25px;
     }
 }
 
