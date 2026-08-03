@@ -110,10 +110,10 @@ var files = (function() {
       "Email    : gupta.10@iitj.ac.in\n" +
       "LinkedIn : https://www.linkedin.com/in/saksham2410/\n" +
       "GitHub   : https://github.com/saksham2410/\n" +
-      "Instagram: https://instagram.com/sakshammm__/",
+      "Instagram: https://instagram.com/dotslashsaksham/",
     "LinkedIn.txt": "https://www.linkedin.com/in/saksham2410/",
     "GitHub.txt": "https://github.com/saksham2410/",
-    "Instagram.txt": "https://instagram.com/sakshammm__/",
+    "Instagram.txt": "https://instagram.com/dotslashsaksham/",
     "Hawkshaw.txt": "https://sakshamgupta.me/hawkshaw/"
   };
   return {
